@@ -15,7 +15,7 @@
 
 <body>
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark  fixed-top" style="background-color: #c93838;">
             <a class="navbar-brand">YTProy</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -31,41 +31,55 @@
                 </ul>
                 <form class="form-inline my-3 my-lg-0">
                     <input class="form-control mr-sm-3" type="search" placeholder="Buscar video" aria-label="Search">
-                    <button class="btn btn-outline-success my-3 my-sm-0" type="submit">Buscar</button>
+                    <select class="form-control " style="margin-right: 10px">
+                         <option value="#">Canal</option>
+                         <option value="#">Título</option>
+                         <option value="#">Etiquetas</option>
+                    </select>
+
+                    <button  class="btn bg-white my-3 my-sm-0" type="submit">Buscar</button>
                 </form>
             </div>
         </nav>
-        <HR>
-      <div style="margin-top:100px" align="center">
-        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-            <!----Indicators---->
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <!--<img src="https://sportshub.cbsistatic.com/i/r/2019/09/26/f81faf11-54b5-4c2f-9d7f-d129b9e45803/thumbnail/1200x675/beefd31357d4275a3ae41939e2b02019/college-football-general.jpg" class="d-block w-100" alt="...">-->
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/GlLIcy20bsU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <hr style="margin-top: 100px">
+        
+        <div align="center">
+           <div class="card text-white mb-3" style="max-width:75%;max-height: 60%;background-color: #c93838;" >
+            <div class="card-header">Top</div>
+           <div style="margin-top:30px; margin-bottom: 30px;" align="center">
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <!----Indicators---->
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/GlLIcy20bsU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="carousel-item">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/GlLIcy20bsU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="carousel-item">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/GlLIcy20bsU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/GlLIcy20bsU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="carousel-item">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/GlLIcy20bsU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
-       </div>
+            <div class="card-footer bg-transparent border-dark">Lo tres vídeos más visto</div>
+        </div>
+        </div>
+
+
     </div>
 </body>
 

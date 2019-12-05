@@ -26,16 +26,6 @@
             <a href="{{ url_for('index') }}"><img src="../static/YTapp.png" id="navImage"></a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url_for('index') }}">Inicio<span class="sr-only">(current)</span></a>
-
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Modificar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Eliminar</a>
-                    </li>
                 </ul>
 
                 <form class="form-inline my-3 my-lg-0" method="post" action="{{ url_for('search') }}">

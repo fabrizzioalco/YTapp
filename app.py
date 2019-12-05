@@ -13,6 +13,7 @@ YT_API_URL = 'https://www.googleapis.com/youtube/v3/videos'
 @app.route('/')
 def index():
     mx_most_viewed = mongo.db.MXvideos.find({'views': {'$gt': 1000000}}, limit=3).sort('views', DESCENDING)
+
     return render_template('index.html', videos=mx_most_viewed)
 
 
@@ -35,9 +36,12 @@ def video(video_id):
 
 @app.route('/insert', methods=['POST'])
 def insert():
-    video_url = request.form.get('video-url')
+    video_url = request.form.get('video-url')[31:]
 
     response = requests.get(YT_API_URL, params={'part': 'snippet, statistics', 'id': video_url, 'key': YT_API_KEY})
+
+    if response.json()['pageInfo']['totalResults'] == 0:
+        return render_template('error.html', message="No video found with the URL provided.")
 
     video_data = response.json()['items'][0]
     snippet = video_data['snippet']
@@ -63,7 +67,34 @@ def insert():
         'user_inserted': 'true'
     }
 
+    mongo.db.MXvideos.insert_one(document)
+
     return render_template('insert.html')
 
+
+@app.route('/delete', methods=['POST'])
+def delete():
+    video_id = request.form.get('video-id')
+
+    res = mongo.db.MXvideos.delete_one({'video_id': video_id})
+
+    if res.deleted_count == 0:
+        return render_template('delete.html', success=False)
+
+    return render_template('delete.html', success=True)
+
+
+@app.route('/update', methods=['POST'])
+def update():
+    video_id = request.form.get('video-id')
+    update_type = requests.form.get('update-type')
+    update_value = requests.form.get('update-value')
+
+    res = mongo.db.MXvideos.update_one({'video_id': video_id}, {f'{update_type}': f'{update_value}'})
+
+    if res.modified_count == 0:
+        return render_template('update.html', success=False)
+
+    return render_template('update.html', success=True)
 
 

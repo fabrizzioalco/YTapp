@@ -19,10 +19,10 @@ def index():
 
 @app.route('/search', methods=['POST'])
 def search():
-    search_query = request.form.get('search-bar')
-    search_type = request.form.get('search-type')
+    search_query = request.form.get('search-bar') #nombres de elementos
+    search_type = request.form.get('search-type') #aqui obtenemos el tipo de elememto que estamos buscando
 
-    videos = mongo.db.MXvideos.find({f'{search_type}': {'$regex': f'{search_query}', '$options': 'i'}})
+    videos = mongo.db.MXvideos.find({f'{search_type}': {'$regex': f'{search_query}', '$options': 'i'}}) #obtenemos datos de db
 
     return render_template('search.html', videos=videos)
 
@@ -37,7 +37,7 @@ def video(video_id):
 @app.route('/insert', methods=['POST'])
 def insert():
     video_url = request.form.get('video-url')[31:]
-
+    
     response = requests.get(YT_API_URL, params={'part': 'snippet, statistics', 'id': video_url, 'key': YT_API_KEY})
 
     if response.json()['pageInfo']['totalResults'] == 0:

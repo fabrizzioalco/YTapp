@@ -16,7 +16,8 @@
         #NavBartext {
             text-emphasis-color: white;
         }
-        #NavImage{
+
+        #NavImage {
             max-width: 10%;
         }
     </style>
@@ -88,9 +89,56 @@
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/S7MDDPeS258" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
+                <div>
+                    <div align="center">
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#show" aria-expanded="false" aria-controls="collapseExample">Información</button>
+                        <button type="submit" class="btn btn-warning" data-toggle="tooltip" data-placement="left" title="Actualizar datos.">Modificar</button>
+                    </div>
+                </div>
+                <div class="col-md-14" style="padding-left:0%;margin-top:50px; ">
+                    <div class="collapse" id="show">
+                        <div class="card card-body">
+                            <form>
+                                <fieldset disabled>
+                                    <div class="form-group">
+                                        <label for="channel">Canal</label>
+                                        <input type="text" class="form-control" id="channel" value="#">
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="video_name">Nombre del video</label>
+                                        <input type="text" class="form-control" id="video_name" value="#">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="url">URL</label>
+                                        <input type="text" class="form-control" id="url" value="#">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="dislikes">Dislikes</label>
+                                            <input type="text" class="form-control" id="dislikes" value="#">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="likes">Likes</label>
+                                            <input type="text" class="form-control" id="likes" value="#">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="views">Views</label>
+                                            <input type="text" class="form-control" id="views" value="#">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="dur">Duración</label>
+                                            <input type="text" class="form-control" id="dur" value="#">
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
 </body>
 

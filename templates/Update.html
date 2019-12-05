@@ -23,12 +23,6 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ url_for('index') }}">Inicio<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('update') }}">Modificar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Eliminar</a>
-                    </li>
                 </ul>
                 <form class="form-inline my-3 my-lg-0" method="post" action="{{ url_for('search') }}">
                     <input class="form-control mr-sm-3" type="search" placeholder="Buscar video" aria-label="Search" name="search-bar">
@@ -75,9 +69,14 @@
                                 <input type="text" class="form-control" id="url" value="https://www.youtube.com/watch?v=Qk9AFipS0zg">
                             </div>
                         </fieldset>
-                        <div align="right">
-                            <button type="submit" class="btn btn-warning" data-toggle="tooltip" data-placement="left"title="Actualizar datos.">Actualizar</button>
-                        </div>
+                        <div>
+                            <div align="center">
+                                <div>
+                                    <button type="submit" class="btn btn-warning" data-toggle="tooltip" data-placement="left"title="Actualizar datos.">Actualizar</button>
+                                     <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="left"title="Eliminar video.">Eliminar</button>
+                                </div>
+                            </div>
+                          </div>
                     </form>
                 </div>
             </div>

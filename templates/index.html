@@ -1,68 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'layout.html' %}
 
-<head>
+{% block title %} Welcome to YTapp! {% endblock %}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://vjs.zencdn.net/7.5.5/video-js.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
-</head>
-<style >
-    #navImage{
-        max-width: 100px;
+{% block style %}
+<style>
+    h3 {
+        text-align: center;
+    }
+
+    button {
+        margin-left: 10px;
     }
 </style>
-<body>
-    <div class="container">
-        <!--Navigation Bar -->
-        <nav class="navbar navbar-expand-lg navbar-dark  fixed-top" style="background-color: #c93838;">
-            <img src="../static/YTapp.png" id="navImage">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
+{% endblock %}
 
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Modificar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Eliminar</a>
-                    </li>
-                </ul>
-
-                <form class="form-inline my-3 my-lg-0" method="post" action="{{ url_for('search') }}">
-                    <input class="form-control mr-sm-3" type="search" placeholder="Buscar video" aria-label="Search" name="search-bar">
-                    <select class="form-control " style="margin-right: 10px" name="search-type">
-                         <option value="title">Canal</option>
-                         <option value="channel_title">Título</option>
-                         <option value="tags">Etiquetas</option>
-
-                    </select>
-
-                    <button  class="btn bg-white my-3 my-sm-0" type="submit">Buscar</button>
-                </form>
-            </div>
-        </nav>
-        <hr style="margin-top: 100px">
-        <!--Panel para subir un video-->
-      <div align="center">
-       <div class="col-lg-6" >
-           <div class="input-group">
-               <input type="text" placeholder="Ingrese URL del video a subir" aria-label="ingresar" name="#" class="form-control mrsm-3">
-               <span class="input-group-btn">
+{% block body %}
+<hr style="margin-top: 100px">
+<h3>Insertar un vídeo a la base de datos</h3>
+<!--Panel para subir un video-->
+<div align="center">
+    <div class="col-lg-6" >
+        <div class="input-group">
+            <input type="text" placeholder="Ingrese URL del video a subir" aria-label="ingresar" name="#" class="form-control mrsm-3">
+            <span class="input-group-btn">
                    <button class="btn btn-outline-dark" type="button">Subir</button>
                </span>
-           </div>
-       </div>
-      </div>
-        <!--Carrusel de los 3 top-->
-        <div align="center" style="padding-top: 3%;">
-           <div class="card text-white mb-3" style="max-width:75%;max-height: 60%;background-color: #c93838;" >
-            <div class="card-header">Top</div>
-           <div style="margin-top:30px; margin-bottom: 30px;" align="center">
+        </div>
+    </div>
+</div>
+<!--Carrusel de los 3 top-->
+<div align="center" style="padding-top: 3%;">
+    <div class="card text-white mb-3" style="max-width:75%;max-height: 60%;background-color: #c93838;" >
+        <div class="card-header">Top</div>
+        <div style="margin-top:30px; margin-bottom: 30px;" align="center">
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                 <!----Indicators---->
                 <ol class="carousel-indicators">
@@ -73,17 +43,17 @@
                 <div class="carousel-inner">
 
                     {% for i in range(3) %}
-                        {% if i ==  1 %}
-                            <div class="carousel-item active">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videos[i].video_id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        {% else %}
-                            <div class="carousel-item">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videos[i].video_id}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        {% endif %}
+                    {% if i ==  1 %}
+                    <div class="carousel-item active">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videos[i].video_id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                     {% else %}
-                        No hay videos
+                    <div class="carousel-item">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videos[i].video_id}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    {% endif %}
+                    {% else %}
+                    No hay videos
                     {% endfor %}
 
                 </div>
@@ -97,17 +67,7 @@
                 </a>
             </div>
         </div>
-            <div class="card-footer bg-transparent border-dark">Lo tres vídeos más visto</div>
-        </div>
-        </div>
-
-
+        <div class="card-footer bg-transparent border-dark">Los tres vídeos más vistos</div>
     </div>
-
-    <script src="https://vjs.zencdn.net/ie6/1.1.2/videojs-ie8.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
-
-</html>
+</div>
+{% endblock %}

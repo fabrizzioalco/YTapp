@@ -24,7 +24,7 @@ def search():
 
     videos = mongo.db.MXvideos.find({f'{search_type}': {'$regex': f'{search_query}', '$options': 'i'}})
 
-    return render_template('index.html', videos=videos)
+    return render_template('ListVideos.html', videos=videos)
 
 
 @app.route('/video/<string:video_id>')

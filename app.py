@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_pymongo import PyMongo, DESCENDING
 import requests
+import re
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/youtube"
@@ -36,12 +37,18 @@ def video(video_id):
 
 @app.route('/insert', methods=['POST'])
 def insert():
-    video_url = request.form.get('video-url')[31:]
+    video_url = request.form.get('video-url')
+    match = re.search('^https://www.youtube.com/watch?', video_url)
 
-    response = requests.get(YT_API_URL, params={'part': 'snippet, statistics', 'id': video_url, 'key': YT_API_KEY})
+    if not match:
+        return render_template('error.html', message='La URL del video no es correcta.')
+
+    video_id = video_url[32:]
+
+    response = requests.get(YT_API_URL, params={'part': 'snippet, statistics', 'id': video_id, 'key': YT_API_KEY})
 
     if response.json()['pageInfo']['totalResults'] == 0:
-        return render_template('index.html', message="No video found with the URL provided.")
+        return render_template('error.html', message="No se encontró un vídeo con la URL.")
 
     video_data = response.json()['items'][0]
     snippet = video_data['snippet']
@@ -67,9 +74,13 @@ def insert():
         'user_inserted': 'true'
     }
 
-    mongo.db.MXvideos.insert_one(document)
+    res = mongo.db.MXvideos.insert_one(document)
+    print(res.inserted_id)
 
-    return render_template('index.html')
+    if not res.inserted_id:
+        return render_template('error.html', message='No se pudo agregar el video a la base de datos.')
+
+    return redirect(url_for('index'))
 
 
 @app.route('/delete', methods=['POST'])
@@ -79,9 +90,9 @@ def delete():
     res = mongo.db.MXvideos.delete_one({'video_id': video_id})
 
     if res.deleted_count == 0:
-        return render_template('ListVideos.html', success=False)
+        return render_template('error.html', message='El video no fue eliminado')
 
-    return render_template('ListVideos.html', success=True)
+    return render_template('ListVideos.html')
 
 
 @app.route('/update', methods=['POST'])
@@ -93,8 +104,8 @@ def update():
     res = mongo.db.MXvideos.update_one({'video_id': video_id}, {f'{update_type}': f'{update_value}'})
 
     if res.modified_count == 0:
-        return render_template('index.html', success=False)
+        return render_template('error.html', message='Los datos no se actualizaron')
 
-    return render_template('index.html', success=True)
+    return render_template('index.html')
 
 

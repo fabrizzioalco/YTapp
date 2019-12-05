@@ -20,12 +20,14 @@
 <!--Panel para subir un video-->
 <div align="center">
     <div class="col-lg-6" >
-        <div class="input-group">
-            <input type="text" placeholder="Ingrese URL del video a subir" aria-label="ingresar" name="#" class="form-control mrsm-3">
-            <span class="input-group-btn">
-                   <button class="btn btn-outline-dark" type="button">Subir</button>
-               </span>
-        </div>
+        <form action="{{ url_for('insert') }}" method="post">
+            <div class="input-group">
+                <input type="text" placeholder="Ingrese URL del video a subir" aria-label="ingresar" name="video-url" class="form-control mrsm-3">
+                <span class="input-group-btn">
+                       <button class="btn btn-outline-dark" type="submit">Subir</button>
+                   </span>
+            </div>
+        </form>
     </div>
 </div>
 <!--Carrusel de los 3 top-->

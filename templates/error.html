@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %} Error {% endblock %}
+
+{% block style %}
+    <style>
+         #imagen {
+             width: 100%;
+             height: 250%;
+             text-align: center;
+             margin-top: 20px;
+         }
+
+         #boton {
+             margin: 40px 10px 10px;
+             text-align: center;
+         }
+
+        h1 {
+            text-align: center;
+        }
+
+        hr {
+            margin-top: 100px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+        <hr>
+        <h1>Ocurrió un Error<br><small>{{ message }}</small></h1>
+        <div class="container" id="imagen">
+            <img src="https://3.bp.blogspot.com/-p0a6ZsbXsO4/WeLfz_uQ_yI/AAAAAAAAA7I/lf4ld2V54Bs_TYCBG8f_BEuLWPVmEJQtgCLcBGAs/w1200-h630-p-k-no-nu/PatricioSad3.png">
+        </div>
+        <div class="container" id="boton">
+            <a href="{{ url_for('index') }}" class="btn btn-light">Regresar al inicio</a>
+        </div>
+
+{% endblock %}

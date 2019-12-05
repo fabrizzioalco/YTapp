@@ -17,7 +17,7 @@
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark  fixed-top" style="background-color: #c93838;">
-            <img src="YTapp.png" id="navImage" >
+            <img src="../templates/YTapp.png" id="navImage">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -60,10 +60,20 @@
                 </ol>
                 <div class="carousel-inner">
 
-                    {% for video in videos %}
-                        <div class="carousel-item active">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video.video_id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
+                    {% for i in range(3) %}
+                    i
+                        {% if i ==  1 %}
+                            <div class="carousel-item active">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video[i].video_id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        {% else %}
+                            <div class="carousel-item">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video[i].video_id}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+
+                        {% endif %}
+                    {% else %}
+                        No hay videos
                     {% endfor %}
 
                 </div>

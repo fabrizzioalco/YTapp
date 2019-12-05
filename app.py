@@ -24,14 +24,14 @@ def search():
 
     videos = mongo.db.MXvideos.find({f'{search_type}': {'$regex': f'{search_query}', '$options': 'i'}}) #obtenemos datos de db
 
-    return render_template('search.html', videos=videos)
+    return render_template('index.html', videos=videos)
 
 
 @app.route('/video/<string:video_id>')
 def video(video_id):
     video = mongo.db.MXvideos.find({'video_id': video_id})
 
-    return render_template('video.html', video=video)
+    return render_template('index.html', video=video)
 
 
 @app.route('/insert', methods=['POST'])
@@ -41,7 +41,7 @@ def insert():
     response = requests.get(YT_API_URL, params={'part': 'snippet, statistics', 'id': video_url, 'key': YT_API_KEY})
 
     if response.json()['pageInfo']['totalResults'] == 0:
-        return render_template('error.html', message="No video found with the URL provided.")
+        return render_template('index.html', message="No video found with the URL provided.")
 
     video_data = response.json()['items'][0]
     snippet = video_data['snippet']
@@ -69,7 +69,7 @@ def insert():
 
     mongo.db.MXvideos.insert_one(document)
 
-    return render_template('insert.html')
+    return render_template('index.html')
 
 
 @app.route('/delete', methods=['POST'])
@@ -79,9 +79,9 @@ def delete():
     res = mongo.db.MXvideos.delete_one({'video_id': video_id})
 
     if res.deleted_count == 0:
-        return render_template('delete.html', success=False)
+        return render_template('ListVideos.html', success=False)
 
-    return render_template('delete.html', success=True)
+    return render_template('ListVideos.html', success=True)
 
 
 @app.route('/update', methods=['POST'])
@@ -93,8 +93,8 @@ def update():
     res = mongo.db.MXvideos.update_one({'video_id': video_id}, {f'{update_type}': f'{update_value}'})
 
     if res.modified_count == 0:
-        return render_template('update.html', success=False)
+        return render_template('index.html', success=False)
 
-    return render_template('update.html', success=True)
+    return render_template('index.html', success=True)
 
 

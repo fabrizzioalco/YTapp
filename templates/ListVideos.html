@@ -1,90 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>YTapp</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
+
 <body>
-<!----List Group--->
-<style>
-    #NavBartext{
-        text-emphasis-color: white;
-    }
-</style>
+    <!----List Group--->
+    <style>
+        #NavBartext {
+            text-emphasis-color: white;
+        }
+        #NavImage{
+            max-width: 10%;
+        }
+    </style>
     <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-                      <a class="navbar-brand" href="#" >YTProy</a>
-                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                          <li class="nav-item active">
-                            <a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">Modificar</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#" >Eliminar</a>
-                          </li>
-                        </ul>
-                        <form class="form-inline my-3 my-lg-0">
-                          <input class="form-control mr-sm-3" type="search" placeholder="Buscar video" aria-label="Search">
-                          <button class="btn btn-outline-success my-3 my-sm-0" type="submit">Buscar</button>
-                        </form>
-                      </div>
-                    </nav>
+        <nav class="navbar navbar-expand-lg navbar-dark  fixed-top" style="background-color:#c93838;">
+            <img src="../static/YTapp.png" id="NavImage" href="#">
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Modificar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Eliminar</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-3 my-lg-0">
+                    <input class="form-control mr-sm-3" type="search" placeholder="Buscar video" aria-label="Search">
+                    <button class="btn bg-white btn-m my-3 my-sm-0" type="submit">Buscar</button>
+                </form>
+            </div>
+        </nav>
         <div class="row pt-5">
             <style>
                 #Lista {
                     padding-left: 0px;
                     padding-right: 40px;
-
-                }
-                #ImagenLista{
-                    padding-left: 80px;
                 }
 
+                #ImagenLista {
+                    padding-left: 60px;
+                    padding-right: 80px;
+                }
             </style>
-  <div class="col-4 pt-5" id="Lista" >
-    <div class="list-group" id="list-tab" role="tablist">
-            <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Video 1</a>
-            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Video 2</a>
-            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Video 3</a>
-            <a class="list-group-item list-group-item-action" id="list-video1" data-toggle="list" href="#list-video-1" role="tab" aria-controls="settings">Video 4</a>
-            <a class="list-group-item list-group-item-action" id="list-video2" data-toggle="list" href="#list-video-2" role="tab" aria-controls="settings">Video 5</a>
-            <a class="list-group-item list-group-item-action" id="list-video3" data-toggle="list" href="#list-video-3" role="tab" aria-controls="settings">Video 6</a>
-    </div>
-  </div>
-  <div class="col-8 pt-5"  id="ImagenLista">
-    <div class="tab-content pl-5" id="nav-tabContent">
-      <div class="tab-pane fade show active pt-0 pl-5" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/kwKrNtq9gHI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="tab-pane fade pl-5" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/KnuYHTIIt88" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="tab-pane fade pl-5" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/HT3Ud2bDy94" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="tab-pane fade pl-5" id="list-video-1" role="tabpanel" aria-labelledby="list-settings-list">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/6iYB4BiaYWw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-        <div class="tab-pane fade pl-5" id="list-video-2" role="tabpanel" aria-labelledby="list-settings-list">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/Ml3V9o7Oyuw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-        <div class="tab-pane fade pl-5" id="list-video-3" role="tabpanel" aria-labelledby="list-settings-list">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/gbm50fHnQ1w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-        <div class="tab-pane fade pl-5" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/S7MDDPeS258" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-</div>
+            <div class="col-4 pt-5" id="Lista">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Video 1</a>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Video 2</a>
+                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Video 3</a>
+                    <a class="list-group-item list-group-item-action" id="list-video1" data-toggle="list" href="#list-video-1" role="tab" aria-controls="settings">Video 4</a>
+                    <a class="list-group-item list-group-item-action" id="list-video2" data-toggle="list" href="#list-video-2" role="tab" aria-controls="settings">Video 5</a>
+                    <a class="list-group-item list-group-item-action" id="list-video3" data-toggle="list" href="#list-video-3" role="tab" aria-controls="settings">Video 6</a>
+                </div>
+            </div>
+            <div class="col-8 pt-5 pr-5" id="ImagenLista">
+                <div class="tab-content pr-5" id="nav-tabContent">
+                    <div class="tab-pane fade show active pt-0 pl-5" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/kwKrNtq9gHI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="tab-pane fade pl-5" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/KnuYHTIIt88" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="tab-pane fade pl-5" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/HT3Ud2bDy94" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="tab-pane fade pl-5" id="list-video-1" role="tabpanel" aria-labelledby="list-settings-list">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/6iYB4BiaYWw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="tab-pane fade pl-5" id="list-video-2" role="tabpanel" aria-labelledby="list-settings-list">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Ml3V9o7Oyuw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="tab-pane fade pl-5" id="list-video-3" role="tabpanel" aria-labelledby="list-settings-list">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/gbm50fHnQ1w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="tab-pane fade pl-5" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/S7MDDPeS258" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </body>
+
 </html>

@@ -8,26 +8,33 @@
         padding-left: 0px;
         padding-right: 40px;
     }
-
     #ImagenLista {
         padding-left: 60px;
         padding-right: 80px;
+    }
+    .list-group{
+        overflow:scroll;
+        -webkit-overflow-scrolling: touch;
+        max-height: 500px;
+        margin-bottom: 10px;
     }
 </style>
 {% endblock %}
 
 {% block body %}
-        <div class="row pt-5">
+        <div class="row pt-5 ">
             <div class="col-4 pt-5" id="Lista">
-                <div class="list-group" id="list-tab" role="tablist">
-                    {% for i in range(videos.count()) %}
+                <div class="list-group " id="list-tab" role="tablist">
+
+                        {% for i in range(videos.count()) %}
                         {% if i == 0 %}
-                            <a class="list-group-item list-group-item-action active" id="list-video{{i}}" data-toggle="list" href="#video{{i}}" role="tab" aria-controls="home">Video{{i + 1}}</a>
+                            <a class="list-group-item list-group-item-action active" id="list-video{{i}}" data-toggle="list" href="#video{{i}}" role="tab" aria-controls="home">{{videos[i].title}}</a>
                         {% else %}
-                            <a class="list-group-item list-group-item-action" id="list-video{{i}}" data-toggle="list" href="#video{{i}}" role="tab" aria-controls="home">Video{{i + 1}}</a>
+                            <a class="list-group-item list-group-item-action" id="list-video{{i}}" data-toggle="list" href="#video{{i}}" role="tab" aria-controls="home">{{videos[i].title}}</a>
                         {% endif %}
                     {% endfor %}
-                </div>
+                   </div>
+
             </div>
             <div class="col-8 pt-5 pr-5" id="ImagenLista">
                 <div class="tab-content pr-5" id="nav-tabContent">

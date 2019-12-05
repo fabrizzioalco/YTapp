@@ -37,7 +37,7 @@ def video(video_id):
 @app.route('/insert', methods=['POST'])
 def insert():
     video_url = request.form.get('video-url')[31:]
-    
+
     response = requests.get(YT_API_URL, params={'part': 'snippet, statistics', 'id': video_url, 'key': YT_API_KEY})
 
     if response.json()['pageInfo']['totalResults'] == 0:

@@ -17,7 +17,8 @@
 <div class="card mb-3 pt-5" id="VideoCard" >
             <div class="row no-gutters">
                 <div class="col-md-8">
-                    <iframe class="card-video"  width="480" height="310" src="https://www.youtube.com/embed/{{ videos }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                    <iframe class="card-video"  width="480" height="310" src="https://www.youtube.com/embed/{{ data['video_id'] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="col-md-8">
                     <div class="card-body" style="padding-left: 50%;" id="btn">
@@ -30,11 +31,12 @@
         </div>
         <div class="col-" style="padding-left: 50%;margin-top:-410.5px; " id="cardform">
             <div class="collapse" id="mostrar">
-                <div class="card card-body" id="FormCard">
+                <div class="card  col-sm card-body" id="FormCard">
+
                     <form class="form-inline my-3 my-lg-0" action="{{ url_for('update') }}" method="post">
 
                             <input class="form-control mr-sm-3" type="search" placeholder="Nuevo dato" aria-label="Search" name="update-value">
-                            <input class="form-control mr-sm-3" type="search" placeholder="{{ videos }}" aria-label="Search" name="video-id" value="{{ videos }}">
+                            <input class="form-control mr-sm-3" type="search" placeholder="Video Id" aria-label="Search" name="video-id" value="{{ data['video_id']}}">
                     <select class="form-control " style="margin-right: 10px" name="update-type">
                         <option value="title">Título</option>
                         <option value="channel_title">Canal</option>
@@ -51,7 +53,7 @@
                           </div>
                     </form>
                       <div>
-                        <form  action="{{ url_for('delete', video_id2= videos ) }}" method="post">
+                        <form  action="{{ url_for('delete', video_id2= data['video_id'] ) }}" method="post">
                             <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="left" name="submitbtn"
                                 title="Actualizar datos.">Eliminar</button>
 

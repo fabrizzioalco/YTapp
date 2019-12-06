@@ -118,8 +118,4 @@ def videoData(video_id):
     print(videoID)
     videos = mongo.db.MXvideos.find({'video_id': videoID})
 
-
-    for items in videos:
-        print(items)
-
-    return render_template('Update.html', videos=videoID)
+    return render_template('Update.html', data=videos)

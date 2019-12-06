@@ -86,40 +86,37 @@ def insert():
     return redirect(url_for('index'))
 
 
-@app.route('/delete/<string:video_id2>', methods=['GET', 'POST'])
-def delete(video_id2):
-    # video_id = request.form.get('video-id')
-    print("video id delete" + video_id2)
+@app.route('/delete', methods=['POST'])
+def delete():
+    video_id = request.form.get('video-id')
 
-    res = mongo.db.MXvideos.delete_one({'video_id': video_id2})
+    res = mongo.db.MXvideos.delete_one({'video_id': video_id})
 
     if res.deleted_count == 0:
         return render_template('error.html', message='El video no fue eliminado')
-
     return redirect(url_for('index'))
 
 
-@app.route('/update', methods=['GET', 'POST'])
+@app.route('/update', methods=['POST'])
 def update():
     video_id = request.form.get('video-id')
-    update_type = request.form.get('update-type')
-    update_value = request.form.get('update-value')
+    video_title = request.form.get('video-title')
+    video_channel = request.form.get('video-channel')
+    video_tags = request.form.get('video-tags')
 
-    res = mongo.db.MXvideos.update_one({'video_id': video_id}, {"$set": {f'{update_type}': f'{update_value}'}})
+    res = mongo.db.MXvideos.update_one({'video_id': video_id}, {"$set": {'title': video_title,
+                                                                         'channel_title': video_channel,
+                                                                         'tags': video_tags}})
+
+    video = mongo.db.MXvideos.find({'video_id': video_id})
 
     if res.modified_count == 0:
         return render_template('error.html', message='Los datos no se actualizaron')
-    return render_template('Update.html', video=video_id)
+    return render_template('Update.html', video=video[0])
 
 
 @app.route('/video-data/<string:video_id>')
 def videoData(video_id):
-    videoID = video_id
-    print(videoID)
-    videos = mongo.db.MXvideos.find({'video_id': videoID})
+    video = mongo.db.MXvideos.find({'video_id': video_id})
 
-
-    for items in videos:
-        print(items)
-
-    return render_template('Update.html', videos=videoID)
+    return render_template('Update.html', video=video[0])

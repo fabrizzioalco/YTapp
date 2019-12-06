@@ -24,6 +24,9 @@ def search():
     search_type = request.form.get('search-type')
 
     videos = mongo.db.MXvideos.find({f'{search_type}': {'$regex': f'{search_query}', '$options': 'i'}})
+    print(videos)
+    if videos.count() == 0:
+        return render_template('error.html', message='No se encuentran videos con esas caracteristicas')
 
     return render_template('ListVideos.html', videos=videos)
 
@@ -83,16 +86,17 @@ def insert():
     return redirect(url_for('index'))
 
 
-@app.route('/delete', methods=['POST'])
-def delete():
-    video_id = request.form.get('video-id')
+@app.route('/delete/<string:video_id2>', methods=['GET', 'POST'])
+def delete(video_id2):
+    # video_id = request.form.get('video-id')
+    print("video id delete" + video_id2)
 
-    res = mongo.db.MXvideos.delete_one({'video_id': video_id})
+    res = mongo.db.MXvideos.delete_one({'video_id': video_id2})
 
     if res.deleted_count == 0:
         return render_template('error.html', message='El video no fue eliminado')
 
-    return render_template('ListVideos.html')
+    return redirect(url_for('index'))
 
 
 @app.route('/update', methods=['GET', 'POST'])
@@ -101,7 +105,7 @@ def update():
     update_type = request.form.get('update-type')
     update_value = request.form.get('update-value')
 
-    res = mongo.db.MXvideos.update_one({'video_id': video_id}, { "$set" : {f'{update_type}': f'{update_value}'}})
+    res = mongo.db.MXvideos.update_one({'video_id': video_id}, {"$set": {f'{update_type}': f'{update_value}'}})
 
     if res.modified_count == 0:
         return render_template('error.html', message='Los datos no se actualizaron')
@@ -112,6 +116,6 @@ def update():
 def videoData(video_id):
     videoID = video_id
     print(videoID)
-    video_1= mongo.db.MXvideos.find({'video_id': videoID})
+    video_1 = mongo.db.MXvideos.find({'video_id': videoID})
     print(str(video_1))
     return render_template('Update.html', video=videoID)

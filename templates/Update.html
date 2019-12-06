@@ -1,19 +1,18 @@
 {% extends 'layout.html' %}
+
 {% block title %} Update {%  endblock %}
 
 {% block style %}
     <style>
-        #btn{
-            alignment: left;
+        #detalles-video {
+            margin-top: 30px;
         }
-    #cardform{
-        padding-left: 2000px;
-    }
     </style>
 {% endblock %}
 
 {% block body %}
     <hr style="margin-top: 100px">
+<<<<<<< HEAD
 <div class="card mb-3 pt-5" id="VideoCard" >
             <div class="row no-gutters">
                 <div class="col-md-8">
@@ -62,6 +61,38 @@
 
 
                 </div>
+=======
+    <div class="container" >
+        <iframe class="card-video"  width="480" height="310" src="https://www.youtube.com/embed/{{ video.video_id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="container" id="detalles-video">
+        <h2>Detalles del video en la base de datos</h2>
+        <form action="{{ url_for('update') }}" method="post">
+            <div class="form-group">
+                <label for="video-id">Video ID</label>
+                <input type="text" class="form-control" id="video-id" name="video-id" value="{{video.video_id}}">
             </div>
-        </div>
-                {% endblock %}
+            <div class="form-group">
+                <label for="video-title">Título del vídeo</label>
+                <input type="text" class="form-control" id="video-title" name="video-title" value="{{video.title}}">
+            </div>
+            <div class="form-group">
+                <label for="video-channel">Título del canal</label>
+                <input type="text" class="form-control" id="video-channel" name="video-channel" value="{{video.channel_title}}">
+            </div>
+            <div class="form-group">
+                <label for="video-tags">Etiquetas</label>
+                <input type="text" class="form-control" id="video-tags" name="video-tags" value="{{video.tags}}">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-danger">Actualizar datos</button>
+>>>>>>> cd30b482aa4e4f1844b3316d8096a526644345f4
+            </div>
+        </form>
+        <form action="{{ url_for('delete') }}" method="post">
+            <input type="hidden" class="" value="{{ video.video_id }}" name="video-id">
+            <button type="submit" class="btn btn-danger">Eliminar este video</button>
+        </form>
+    </div>
+
+{% endblock %}

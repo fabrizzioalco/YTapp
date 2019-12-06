@@ -46,18 +46,14 @@
                             <div class="tab-pane fade show active pt-0 pl-5" id="video{{i}}" role="tabpanel" aria-labelledby="list-home-list">
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videos[i].video_id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 <div align="right">
-                                    <a href="{{ url_for('videoData', video_id=videos[i].video_id) }}" method="get">
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="left"title="Actualizar datos.">Actualizar</button>
-                                    </a>
+                                    <a href="{{ url_for('videoData', video_id=videos[i].video_id) }}" class="btn btn-danger">Detalles del video</a>
                                 </div>
                             </div>
                         {% else %}
                             <div class="tab-pane fade pl-5" id="video{{i}}" role="tabpanel" aria-labelledby="list-profile-list">
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videos[i].video_id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 <div align="right">
-                                    <a href="{{ url_for('videoData', video_id=videos[i].video_id) }}" method="get">
-                                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="left"title="Actualizar datos.">Actualizar</button>
-                                    </a>
+                                    <a href="{{ url_for('videoData', video_id=videos[i].video_id) }}" class="btn btn-danger">Detalles del video</a>
                                 </div>
                             </div>
 

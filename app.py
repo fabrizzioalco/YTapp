@@ -98,21 +98,20 @@ def delete():
 @app.route('/update', methods=['GET', 'POST'])
 def update():
     video_id = request.form.get('video-id')
-    update_type = requests.form.get('update-type')
-    update_value = requests.form.get('update-value')
+    update_type = request.form.get('update-type')
+    update_value = request.form.get('update-value')
 
-    res = mongo.db.MXvideos.update_one({'video_id': video_id}, {f'{update_type}': f'{update_value}'})
+    res = mongo.db.MXvideos.update_one({'video_id': video_id}, { "$set" : {f'{update_type}': f'{update_value}'}})
 
     if res.modified_count == 0:
         return render_template('error.html', message='Los datos no se actualizaron')
-
-    return render_template('Update.html')
+    return render_template('Update.html', video=video_id)
 
 
 @app.route('/video-data/<string:video_id>')
 def videoData(video_id):
     videoID = video_id
     print(videoID)
-    video = mongo.db.MXvideos.find({'video_id': videoID})
-    print(video)
+    video_1= mongo.db.MXvideos.find({'video_id': videoID})
+    print(str(video_1))
     return render_template('Update.html', video=videoID)
